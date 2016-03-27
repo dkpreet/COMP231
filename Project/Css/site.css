@@ -1,0 +1,151 @@
+﻿DIV.error {
+    background-color: #d04544;
+    border-color: #ff6a00;
+    color: #ffffff;
+}
+
+.notice {
+    background-color: #b9def0;
+    border-color: #9acfea;
+    color: #0088CC;
+}
+
+.warning {
+    background-color: #cfb306;
+    border-color: #e7d48d;
+    color: #ffffff;
+}
+
+ul.cleanList {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+.themeItem {
+    padding-bottom:1em;
+}
+
+.required {
+    color:#d04544;
+}
+
+.blue {
+    color: #0088CC;
+}
+
+.left-padding {
+    padding-left: 15px;
+}
+
+.center {
+    text-align:center;
+}
+/* SHOPPING CART START 
+   =================================*/
+div.featured-boxes div.featured-box {
+    max-width: 100%;
+}
+
+div.shop .star-rating span, div.shop .cart-totals tr.total .amount {
+    color: #0088CC;
+}
+
+div.shop table.cart .product-thumbnail {
+    width: 50%;
+}
+
+div.shop table.cart img {
+    width:100%;
+}
+
+tr.total-row .amount {
+    display: block;
+    font-size: 2em;
+    padding-top: 10px;
+    color: #0088CC;
+}
+
+td.total-column {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+div.place-order {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+span.clickable {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.discount {
+    color:#d04544;
+}
+/* SHOPPING CART END
+   =================================*/
+
+/* PREVIEW START
+   =================================*/
+.frame-preview {
+    width: 100%;
+    height: 88%;
+}
+.review-bar {
+    padding-top: 15px;
+}
+
+.thumb-info-inner strong {
+    font-size: 29px;
+}
+/* PREVIEW END
+   =================================*/
+
+.product-name {
+    color:#0088CC;
+    font-weight:bold;
+}
+
+.processMessage {
+    padding-top:10px;
+}
+/* INVOICE START
+   =================================*/
+
+table.invoice_table {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 0 #DDDDDD;
+}
+
+table.invoice_table thead{
+    border-bottom-color: #0088CC;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+tr.invoice_item {
+    border-bottom-color: #DDDDDD;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    line-height: 35px;
+}
+
+td.invoice-subtotal-column {
+    background-color: #F4F4F4;
+}
+
+td.invoice-total-column {
+    background-color: #0088CC;
+    color: #fff;
+    text-shadow: 1px 1px 0 #333;
+}
+
+h5.invoice-header {
+    margin-top: 30px;
+}
+/* INVOICE END
+   =================================*/

@@ -1,0 +1,261 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Build TimeTable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Web Fonts  -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" />
+    <!-- third party style sheets -->
+    <link href="Css/bootstrap.css" rel="stylesheet" />
+    <link href="Css/component.css" rel="stylesheet" />
+    <link href="Css/animated-theme.css" rel="stylesheet" />
+    <link href="Css/font.css" rel="stylesheet" />
+    <link href="Css/Magnifice-popup.css" rel="stylesheet" />
+    <link href="Css/modal-window.css" rel="stylesheet" />
+    <link href="Css/setting.css" rel="stylesheet" />
+    <link href="Css/site.css" rel="stylesheet" />
+    <link href="Css/slider.css" rel="stylesheet" />
+    <link href="Css/theme-animate.css" rel="stylesheet" />
+    <link href="Css/theme-blue.css" rel="stylesheet" />
+    <link href="Css/theme-element.css" rel="stylesheet" />
+    <link href="Css/theme-responsive.css" rel="stylesheet" />
+    <link href="Css/theme-shop.css" rel="stylesheet" />
+    <link href="Css/theme.css" rel="stylesheet" />
+    <script type="text/javascript" src="/Content/ThirdParty/Modernizr/Modernizr-2.6.2/modernizr.js">
+    </script>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="~/Content/ThirdParty/Respond/Respond-1.3.0/respond.min.js">
+    </script>
+<![endif]-->
+    <!--Start of Zopim Live Chat Script-->
+
+    <!--End of Zopim Live Chat Script-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-53828246-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+            <header class="single-menu flat-menu">
+            <div class="container">
+                <h2 class="logo" id="logoHolder">
+                    <a href="/">
+                        <img alt="wiwet" src="Image/Logo.png" />
+                    </a>
+                </h2>
+                <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
+                </button>
+            </div>
+            <div class="navbar-collapse nav-main-collapse collapse">
+                <div class="container">
+                    <div class="social-icons">
+                        <%-- <ul class="social-icons">
+                    <li class="facebook">
+                        <a href="https://www.facebook.com/pages/Wiwet-Themes/1983446825129370" target="_blank" title="Facebook">
+                            Facebook
+                        </a>
+                    </li>
+                    <li class="twitter">
+                        <a href="https://twitter.com/WiwetThemes" target="_blank" title="Twitter">
+                            Twitter
+                        </a>
+                    </li>
+                    <li class="googleplus">
+                        <a href="http://google.com/+Wiwet-ASP-NET-Templates" target="_blank" title="Google+">
+                            Google+
+                        </a>
+                    </li>
+                    
+                </ul>--%>
+                    </div>
+                    <nav class="nav-main">
+                        <ul class="nav nav-pills nav-main" id="mainMenu">
+                            <li class="dropdown active">
+                                <a data-hash class="dropdown-toggle" href="#home">Home
+                                </a>
+                            </li>
+                            <li>
+                                <a data-hash href="#themes" title="ASP.NET Templates">Programmes and Courses
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/CustomTemplate">Admission
+                                </a>
+                            </li>
+                            <li>
+                                <a data-hash href="#contact" title="Dont Be Shy!">Student Life
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/HowTo" title="How To">About Centennial
+                                </a>
+                            </li>
+
+
+                            <li>
+                                <a href="/Account/Login">Log In
+                                </a>
+                            </li>
+                            <%-- <li>
+                        <a href="/Cart" title="Your Cart">
+                            <i class="icon icon-shopping-cart">
+                            </i>
+                            &nbsp;Cart
+                        </a>
+                    </li>--%>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+         <div role="main" class="main" id="home">
+            <div id="content" class="content full">
+                <div class="slider-container slider-container-fullscreen hidden-xs">
+                    <div class="slider" id="revolutionSliderFullScreen">
+                        <ul>
+                            <li data-transition="fade" data-slotamount="10" data-masterspeed="300">
+                                <%-- <img src="Image/index.jpg" data-fullwidthcentering="on" alt="" />--%>
+                                <div class="tp-caption top-label lfl stl"
+                                    data-x="400"
+                                    data-y="100"
+                                    data-speed="300"
+                                    data-start="500"
+                                    data-easing="easeOutExpo">
+                                    Fully integrated with Visual Studio
+                                </div>
+
+                                <div class="tp-caption sft stb center-caption"
+                                    data-x="0"
+                                    data-y="290"
+                                    data-speed="300"
+                                    data-start="2500"
+                                    data-easing="easeOutExpo">
+                                    <%-- <a data-hash href="#themes" class="btn btn-lg btn-primary main-button">
+                                Get Them Now!
+                            </a>--%>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <section class="highlight top">
+                    <div class="container">
+                        <div class="row" id="themes">
+                            <div class="col-md-12">
+                                <h1>
+                                    <strong style="color: #3ADF00">Centennial College
+                                    </strong>
+                                </h1>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section class="parallax" data-stellar-background-ratio="0.5"
+                    style="background-image: url(Image/img1.jpg);">
+                    <div class="container">
+
+                        <i class="icon icon-featured" data-appear-animation="bounceIn"></i>
+                        <%-- <h2 class="short text-shadow big white bold">
+                            <strong>
+                                Custom Templates
+                            </strong>
+                        </h2>--%>
+                    </div>
+
+                </section>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="text-align: center; padding-left:220px">
+                            <table style="width: 80%">
+                                <tr>
+                                    <td>
+                                        <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+
+            </div>
+
+            <footer class="short" id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>Three ways modern Graphic Design has changed
+                            </h4>
+                            <p>
+                                We live in a world where visuals are important. Ever since print media existed, demand that it look slick and eye-catching has put talented graphic....
+                            </p>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1">
+
+                            <ul class="list icons list-unstyled">
+                                <li>
+
+                                    <a href="http://www.centennialcollege.ca/?gclid=CMC669DwlssCFZCIaQodouEBbw">CentennialCollege.ca
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <a href="/" class="logo">
+                                    <img alt="Logo" class="img-responsive" src="Image/SmallLogo.png" />
+                                </a>
+                            </div>
+                            <div class="col-md-7">
+                                <p>
+                                    © Copyright 2016 | Created By Team1
+                       
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+   
+    </form>
+</body>
+</html>
