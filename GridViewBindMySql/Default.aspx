@@ -22,11 +22,32 @@
                     <asp:CheckBox ID="chkCtrl" runat="server" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="Course_ID" HeaderText="Course_ID" ItemStyle-Width="90" />
-            <asp:BoundField DataField="Course_Code" HeaderText="Course_Code" ItemStyle-Width="120" />
+            <asp:BoundField DataField="Course_Code" HeaderText="Course_ID" ItemStyle-Width="90" />
+            <asp:BoundField DataField="Course_Number" HeaderText="Course_Code" ItemStyle-Width="120" />
             <asp:BoundField DataField="Course_Name" HeaderText="Course_Name" ItemStyle-Width="90" />
-            <asp:BoundField DataField="Section_ID" HeaderText="Section_ID" ItemStyle-Width="100" />
-            <asp:BoundField DataField="Max_Seat" HeaderText="Max_Seat" ItemStyle-Width="150" />
+
+        </Columns>
+    </asp:GridView>
+            </asp:Panel>
+
+         <asp:Panel ID="Panel2" runat="server" Width="100%" ScrollBars="Horizontal">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="false">
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <AlternatingRowStyle BackColor="#BFE4FF" />
+        <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:CheckBox ID="chkCtr2" runat="server" />
+                </ItemTemplate>
+            </asp:TemplateField>
+                    <asp:BoundField DataField="Course_Code" HeaderText="Course Code" ItemStyle-Width="150" ReadOnly="True" SortExpression="Course_ID" />
+        <asp:BoundField DataField="Course_Number" HeaderText="Course Number" ItemStyle-Width="250" ReadOnly="True" SortExpression="Course_Name" />
+              <asp:BoundField DataField="Course_Name" HeaderText="Course Name" ItemStyle-Width="150" ReadOnly="True" />           
+                     <asp:BoundField DataField="Section_Number" HeaderText="Section" ItemStyle-Width="150" ReadOnly="True" />
+                     <asp:BoundField DataField="Day" HeaderText="Day" ItemStyle-Width="150" ReadOnly="True" />
+                     <asp:BoundField DataField="S_Time" HeaderText="Start" ItemStyle-Width="150" ReadOnly="True" />
+             <asp:BoundField DataField="E_Time" HeaderText="End Time" ItemStyle-Width="150" ReadOnly="True" />
+
         </Columns>
     </asp:GridView>
     <br />
