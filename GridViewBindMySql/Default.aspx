@@ -40,13 +40,13 @@
                     <asp:CheckBox ID="chkCtr2" runat="server" />
                 </ItemTemplate>
             </asp:TemplateField>
-                    <asp:BoundField DataField="Course_Code" HeaderText="Course Code" ItemStyle-Width="150" ReadOnly="True" SortExpression="Course_ID" />
-        <asp:BoundField DataField="Course_Number" HeaderText="Course Number" ItemStyle-Width="250" ReadOnly="True" SortExpression="Course_Name" />
-              <asp:BoundField DataField="Course_Name" HeaderText="Course Name" ItemStyle-Width="150" ReadOnly="True" />           
+                    <asp:BoundField DataField="Course_Code" HeaderText="Course Code" ItemStyle-Width="125" ReadOnly="True" SortExpression="Course_ID" />
+        <asp:BoundField DataField="Course_Number" HeaderText="Course Number" ItemStyle-Width="125" ReadOnly="True" SortExpression="Course_Name" />
+              <asp:BoundField DataField="Course_Name" HeaderText="Course Name" ItemStyle-Width="250" ReadOnly="True" />           
                      <asp:BoundField DataField="Section_Number" HeaderText="Section" ItemStyle-Width="150" ReadOnly="True" />
-                     <asp:BoundField DataField="Day" HeaderText="Day" ItemStyle-Width="150" ReadOnly="True" />
-                     <asp:BoundField DataField="S_Time" HeaderText="Start" ItemStyle-Width="150" ReadOnly="True" />
-             <asp:BoundField DataField="E_Time" HeaderText="End Time" ItemStyle-Width="150" ReadOnly="True" />
+                     <asp:BoundField DataField="Day" HeaderText="Day" ItemStyle-Width="125" ReadOnly="True" />
+                     <asp:BoundField DataField="S_Time" HeaderText="Start" ItemStyle-Width="125" ReadOnly="True" />
+             <asp:BoundField DataField="E_Time" HeaderText="End Time" ItemStyle-Width="125" ReadOnly="True" />
 
         </Columns>
     </asp:GridView>
