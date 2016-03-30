@@ -56,9 +56,9 @@ namespace GridViewBindMySql
         /// <param name="e"></param>
         protected void btnBind_Click(object sender, EventArgs e)
         {
+            DataSet ds = new DataSet();
             try
             {
-                string data = "";
                 foreach (GridViewRow row in grvCustomers.Rows)
                 {
                     if (row.RowType == DataControlRowType.DataRow)
@@ -72,18 +72,17 @@ namespace GridViewBindMySql
                             conn.Open();
                             MySqlCommand cmd = new MySqlCommand("SELECT Course_Code, Course_Number, Course_Name, Section_Number, Day, S_tIME, E_Time FROM section, course, timeslot where section.Course_ID = course.Course_ID AND section.Slot_ID = timeslot.Slot_ID AND course.Course_Code = '" + CourseCode + "' AND course.Course_Number = '" + CourseNumber + "'", conn);
                             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                            DataSet ds = new DataSet();
+                        
                             adp.Fill(ds);
                             adp.Dispose();
                             cmd.Dispose();
-                            conn.Close();
+
                             GridView2.DataSource = ds.Tables[0];
                             GridView2.DataBind();
-
+                            conn.Close();
                         }
                     }
                 }
-                lblmsg.Text = data;
 
             }
             catch (MySqlException ex)
