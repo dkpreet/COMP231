@@ -66,13 +66,20 @@ namespace GridViewBindMySql
                         CheckBox chkRow = (row.Cells[0].FindControl("chkCtrl") as CheckBox);
                         if (chkRow.Checked)
                         {
-                            string Course_ID = row.Cells[1].Text;
-                            string Course_Code = row.Cells[2].Text;
-                            string Course_Name = row.Cells[3].Text;
-                            string Section_ID = row.Cells[4].Text;
-                            string Max_Seat = row.Cells[5].Text;
+                            string CourseCode = row.Cells[1].Text;
+                            string CourseNumber = row.Cells[2].Text;
 
-                            data = data + Course_ID + ",   " + Course_Code + ",   " + Course_Name + ",   " + Section_ID + ",   " + Max_Seat + "<br>";
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("SELECT Course_Code, Course_Number, Course_Name, Section_Number, Day, S_tIME, E_Time FROM section, course, timeslot where section.Course_ID = course.Course_ID AND section.Slot_ID = timeslot.Slot_ID AND course.Course_Code = '" + CourseCode + "' AND course.Course_Number = '" + CourseNumber + "'", conn);
+                            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                            DataSet ds = new DataSet();
+                            adp.Fill(ds);
+                            adp.Dispose();
+                            cmd.Dispose();
+                            conn.Close();
+                            GridView2.DataSource = ds.Tables[0];
+                            GridView2.DataBind();
+
                         }
                     }
                 }
