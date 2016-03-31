@@ -25,11 +25,12 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `course` (
-  `Course_Code` varchar(45) NOT NULL,
-  `Course_Number` int(11) NOT NULL,
-  `Course_Name` varchar(45) NOT NULL,
-  PRIMARY KEY (`Course_Code`,`Course_Number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Course_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Course_Code` varchar(45) DEFAULT NULL,
+  `Course_Number` int(11) DEFAULT NULL,
+  `Course_Name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Course_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('COMP',100,'Programming 1'),('COMP',122,'Database'),('COMP',123,'Programming 2'),('COMP',212,'Web Design'),('COMP',231,'Computer Project 1'),('COMP',301,'Unix/Linux'),('GNED',219,'The Canadian workplace'),('MATH',175,'Mathematics');
+INSERT INTO `course` VALUES (1,'COMP',100,'Programming 1'),(2,'COMP',122,'Database'),(3,'COMP',123,'Programming 2'),(4,'MATH',175,'Mathematics'),(5,'COMP',213,'Web Design'),(6,'GNED',219,'The Canadian workplace'),(7,'COMP',231,'Computer Project 1'),(8,'COMP',301,'Unix/Linux'),(9,'COMP',214,'Java');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,14 +51,16 @@ DROP TABLE IF EXISTS `enrollment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `enrollment` (
-  `Enrollment_ID` int(11) NOT NULL,
-  `Section_Number` int(11) NOT NULL,
-  `Course_Code` varchar(45) NOT NULL,
-  `Course_Number` int(11) NOT NULL,
-  `Slot_ID` int(11) NOT NULL,
-  PRIMARY KEY (`Enrollment_ID`,`Section_Number`,`Course_Code`,`Course_Number`,`Slot_ID`),
-  KEY `fk_enrollment_section1_idx` (`Section_Number`,`Course_Code`,`Course_Number`,`Slot_ID`),
-  CONSTRAINT `fk_enrollment_section1` FOREIGN KEY (`Section_Number`, `Course_Code`, `Course_Number`, `Slot_ID`) REFERENCES `section` (`Section_Number`, `Course_Code`, `Course_Number`, `Slot_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `Enrollment_ID` int(32) NOT NULL,
+  `Section_ID` int(32) NOT NULL,
+  `Course_ID` int(32) NOT NULL,
+  `Slot_ID` int(32) NOT NULL,
+  `Student_ID` int(32) NOT NULL,
+  PRIMARY KEY (`Enrollment_ID`,`Section_ID`,`Course_ID`,`Slot_ID`,`Student_ID`),
+  KEY `fk_enrollment_section1_idx` (`Section_ID`,`Course_ID`,`Slot_ID`),
+  KEY `fk_enrollment_student1_idx` (`Student_ID`),
+  CONSTRAINT `fk_enrollment_section1` FOREIGN KEY (`Section_ID`, `Course_ID`, `Slot_ID`) REFERENCES `section` (`Section_ID`, `Course_ID`, `Slot_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_enrollment_student1` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`Student_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,7 +70,7 @@ CREATE TABLE `enrollment` (
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
-INSERT INTO `enrollment` VALUES (1,0,'',0,0),(2,0,'',0,0),(3,0,'',0,0),(4,0,'',0,0),(5,0,'',0,0),(6,0,'',0,0),(7,0,'',0,0),(8,0,'',0,0),(9,0,'',0,0),(10,0,'',0,0),(11,0,'',0,0),(12,0,'',0,0),(13,0,'',0,0),(14,0,'',0,0),(15,0,'',0,0),(16,0,'',0,0);
+INSERT INTO `enrollment` VALUES (4,1,1,1,822882411);
 /*!40000 ALTER TABLE `enrollment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,18 +82,17 @@ DROP TABLE IF EXISTS `section`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `section` (
-  `Section_Number` int(11) NOT NULL,
-  `Max_Seat` int(11) NOT NULL,
-  `Section_ID` int(11) NOT NULL,
-  `Course_Code` varchar(45) NOT NULL,
-  `Course_Number` int(11) NOT NULL,
+  `Section_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Section_Number` int(11) DEFAULT NULL,
+  `Max_Seat` int(11) DEFAULT NULL,
+  `Course_ID` int(11) NOT NULL,
   `Slot_ID` int(11) NOT NULL,
-  PRIMARY KEY (`Section_Number`,`Course_Code`,`Course_Number`,`Slot_ID`),
-  KEY `fk_section_course_idx` (`Course_Code`,`Course_Number`),
+  PRIMARY KEY (`Section_ID`,`Course_ID`,`Slot_ID`),
+  KEY `fk_section_course_idx` (`Course_ID`),
   KEY `fk_section_timeslot1_idx` (`Slot_ID`),
-  CONSTRAINT `fk_section_course` FOREIGN KEY (`Course_Code`, `Course_Number`) REFERENCES `course` (`Course_Code`, `Course_Number`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_section_course` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`Course_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_section_timeslot1` FOREIGN KEY (`Slot_ID`) REFERENCES `timeslot` (`Slot_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +101,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (1,40,101,'COMP',100,1),(2,40,102,'COMP',100,2),(3,40,101,'COMP',231,3),(4,40,102,'COMP',231,4),(5,40,101,'COMP',301,5),(6,40,102,'COMP',122,5),(7,40,101,'COMP',122,5),(8,40,102,'MATH',175,6),(9,40,101,'MATH',175,7),(10,40,102,'COMP',212,8),(11,40,101,'COMP',212,9),(12,40,102,'COMP',123,9),(13,40,101,'COMP',123,7),(14,40,102,'GNED',219,6),(15,40,101,'GNED',219,7),(16,40,102,'COMP',301,6);
+INSERT INTO `section` VALUES (1,801,40,1,1),(2,802,40,1,2),(3,801,40,2,2),(4,802,40,2,3),(5,801,40,3,4),(6,802,40,3,5),(7,801,40,4,4),(8,802,40,4,5),(9,801,40,5,3),(10,802,40,5,5),(11,801,40,6,6),(12,802,40,6,8),(13,801,40,7,2),(14,802,40,7,3),(15,801,40,8,7),(16,802,40,8,6),(17,801,40,8,4),(18,802,40,9,5);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +152,7 @@ CREATE TABLE `timeslot` (
 
 LOCK TABLES `timeslot` WRITE;
 /*!40000 ALTER TABLE `timeslot` DISABLE KEYS */;
-INSERT INTO `timeslot` VALUES (1,'08:30:00','09:20:00','MON'),(2,'09:30:00','10:20:00','MON'),(3,'10:30:00','11:20:00','MON'),(4,'08:30:00','09:20:00','TUE'),(5,'09:30:00','10:20:00','TUE'),(6,'10:30:00','11:20:00','TUE'),(7,'08:30:00','09:20:00','WED'),(8,'09:30:00','10:20:00','WED'),(9,'10:30:00','11:20:00','WED');
+INSERT INTO `timeslot` VALUES (1,'08:30:00','09:20:00','Mon'),(2,'09:30:00','10:20:00','Mon'),(3,'10:30:00','11:20:00','Mon'),(4,'08:30:00','09:20:00','Tue'),(5,'09:30:00','10:20:00','Tue'),(6,'10:30:00','11:20:00','Tue'),(7,'08:30:00','09:20:00','Wed'),(8,'09:30:00','10:20:00','Wed'),(9,'10:30:00','11:20:00','Wed');
 /*!40000 ALTER TABLE `timeslot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-26  1:27:15
+-- Dump completed on 2016-03-30 20:32:57
